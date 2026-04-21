@@ -43,10 +43,10 @@ const Services = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="text-center mb-16">
-          <h2 className="text-sm uppercase tracking-widest text-accent font-semibold mb-3">
+          <h2 className="text-xs uppercase tracking-[0.15em] text-[#d4af37] font-[300] mb-3">
             Our Expertise
           </h2>
-          <h3 className="text-3xl md:text-5xl font-heading font-bold text-primary">
+          <h3 className="text-3xl md:text-5xl font-heading font-[100] tracking-[0.05em] text-primary transition-all duration-[1000ms] ease-[cubic-bezier(0.23,1,0.32,1)] transform">
             Comprehensive Design Services
           </h3>
         </div>
@@ -58,16 +58,16 @@ const Services = () => {
           {servicesList.map((service, index) => (
             <div 
               key={index}
-              className={`group p-8 border border-gray-100 rounded-sm hover:shadow-xl transition-all duration-700 bg-secondary/30 hover:-translate-y-2 hover:bg-white transform ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              className={`group p-8 border border-gray-100 rounded-lg hover:shadow-2xl bg-white/40 backdrop-blur-md transition-all duration-[1000ms] ease-[cubic-bezier(0.23,1,0.32,1)] transform ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-accent shadow-sm mb-6 group-hover:bg-accent group-hover:text-white transition-colors duration-300 font-bold tracking-wider">
+              <div className="w-[56px] h-[56px] bg-transparent border border-gray-200 rounded-full flex items-center justify-center text-[#d4af37] shadow-sm mb-6 transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] font-[300] tracking-wider group-hover:scale-110 group-hover:shadow-[0px_0px_25px_rgba(212,175,55,0.3)] group-hover:border-[#d4af37]/50">
                 {service.icon}
               </div>
-              <h4 className="text-xl font-heading font-semibold text-primary mb-3">
+              <h4 className="text-xl font-heading font-[400] text-primary mb-3">
                 {service.title}
               </h4>
-              <p className="text-gray-600 font-light leading-relaxed">
+              <p className="text-gray-800 font-[200] leading-[1.8] text-sm">
                 {service.description}
               </p>
             </div>

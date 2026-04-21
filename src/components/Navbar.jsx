@@ -29,25 +29,25 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             {/* Logo */}
             <div className="flex-shrink-0 relative z-50">
-              <a href="#home" className={`text-3xl font-heading font-bold tracking-widest transition-colors duration-300 ${isMobileMenuOpen ? 'text-white drop-shadow-md' : (isScrolled ? 'text-primary' : 'text-white')}`}>
+              <a href="#home" className={`text-3xl font-heading font-bold tracking-[0.4em] transition-colors duration-300 ${isMobileMenuOpen ? 'text-white drop-shadow-md' : (isScrolled ? 'text-primary' : 'text-white')}`}>
                 AURA
               </a>
             </div>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-[25px]">
               {navLinks.map((link) => (
                 <a 
                   key={link.name} 
                   href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-accent ${isScrolled ? 'text-gray-800' : 'text-white/90'}`}
+                  className={`text-[12px] uppercase tracking-[0.2em] font-medium transition-colors hover:text-accent ${isScrolled ? 'text-gray-800' : 'text-white/90'}`}
                 >
                   {link.name}
                 </a>
               ))}
               <a 
                 href="#contact"
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all transform hover:scale-105 active:scale-95 ${isScrolled ? 'bg-primary text-white shadow-lg hover:shadow-xl' : 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]'}`}
+                className={`px-6 py-2.5 rounded-full text-[12px] uppercase tracking-[0.2em] font-medium transition-all transform hover:scale-105 active:scale-95 ${isScrolled ? 'bg-primary text-white shadow-lg hover:shadow-xl' : 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]'}`}
               >
                 Book Consultation
               </a>

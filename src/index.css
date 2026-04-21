@@ -8,13 +8,41 @@
     scroll-padding-top: 6rem;
   }
 
+  * {
+    font-family: 'Mulish', sans-serif !important;
+    font-weight: 200 !important;
+  }
+
   body {
-    @apply bg-secondary text-primary font-sans antialiased overflow-x-hidden ;
-    @apply m-0 min-h-screen bg-transparent font-sans text-slate-950 antialiased;
+    @apply bg-secondary text-primary overflow-x-hidden;
+    @apply m-0 min-h-screen bg-transparent;
+    font-family: 'Mulish', sans-serif !important;
+    font-weight: 200 !important;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #4a4a4a;
+    letter-spacing: 1px !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-stroke: 0.1px rgba(255,255,255,0.1);
+    text-stroke: 0.1px rgba(255,255,255,0.1);
+    text-rendering: optimizeLegibility;
     background-attachment: fixed;
   }
+  
+  p {
+    letter-spacing: 0.03em;
+  }
+  
+  nav a {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 200;
+    font-size: 16px;
+  }
+
   h1,h2,h3,h4,h5,h6{
-    @apply font-heading tracking-tight;
+    @apply tracking-tight font-extralight;
+    font-weight: 200;
   }
 }
 @layer utilities{

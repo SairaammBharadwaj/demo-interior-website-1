@@ -18,12 +18,12 @@ const Hero = () => {
       </motion.div>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         <motion.h1 
-          className="text-4xl md:text-6xl lg:text-7xl text-white font-heading font-bold mb-6 tracking-wide drop-shadow-md"
+          className="text-4xl md:text-6xl lg:text-7xl text-white font-heading font-[200] mb-6 tracking-[0.05em] drop-shadow-md"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -46,10 +46,10 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <a href="#projects" className="px-8 py-3.5 bg-accent text-white font-medium rounded-sm hover:bg-accent/90 transition-all transform active:scale-95 shadow-lg">
+          <a href="#projects" className="px-[30px] py-[12px] bg-[#c4a233] text-white font-medium rounded-sm hover:bg-[#c4a233]/90 transition-all transform active:scale-95 shadow-lg tracking-[0.1em] uppercase text-[13px]">
             View Projects
           </a>
-          <a href="#contact" className="px-8 py-3.5 bg-white/10 backdrop-blur-sm text-white font-medium border border-white/30 rounded-sm hover:bg-white hover:text-primary transition-all transform active:scale-95">
+          <a href="#contact" className="px-[30px] py-[12px] bg-white/10 backdrop-blur-sm text-white font-medium border border-white/30 rounded-sm hover:bg-white hover:text-primary transition-all transform active:scale-95 tracking-[0.1em] uppercase text-[13px]">
             Book Consultation
           </a>
         </motion.div>

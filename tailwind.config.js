@@ -13,8 +13,8 @@ export default {
         light:"#FFFFFF",
       },
       fontFamily: {
-        sans: ['Manrope', 'sans-serif'],
-        heading: ['"Cormorant Garamond"', 'serif'],
+        sans: ['"Mulish"', 'sans-serif'],
+        heading: ['"Mulish"', 'sans-serif'],
       }
     },
   },
