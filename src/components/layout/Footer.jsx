@@ -8,7 +8,7 @@ const Footer = () => {
           
           {/* Brand */}
           <div className="col-span-1 md:col-span-1">
-            <h2 className="text-2xl font-heading font-bold tracking-wider text-white mb-4">AURA</h2>
+            <h2 className="text-2xl font-heading font-bold tracking-wider text-white mb-4">DS INTERIORS</h2>
             <p className="text-white/60 font-light text-sm leading-relaxed max-w-xs">
               Crafting timeless, minimalist, and functional luxury interiors for the discerning few.
             </p>
@@ -42,7 +42,7 @@ const Footer = () => {
             <p className="text-white/60 font-light text-sm mb-2">123 Design Boulevard, Suite 450</p>
             <p className="text-white/60 font-light text-sm mb-2">Metropolis, NY 10001</p>
             <p className="text-white/60 font-light text-sm mb-2">+1 (800) 123-4567</p>
-            <p className="text-white/60 font-light text-sm">hello@auradesign.com</p>
+            <p className="text-white/60 font-light text-sm">hello@dsinteriors.com</p>
           </div>
           
         </div>
@@ -50,7 +50,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="pt-8 border-t border-white/10 text-center flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/40 text-xs font-light mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} Aura Interior Design. All rights reserved.
+            &copy; {new Date().getFullYear()} DS Interiors. All rights reserved.
           </p>
           <div className="text-white/40 text-xs font-light">
             Designed for Modern Living.

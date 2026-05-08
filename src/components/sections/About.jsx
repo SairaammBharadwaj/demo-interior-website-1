@@ -66,12 +66,12 @@ const About = () => {
             ref={rightRef}
             className={`transition-all duration-1000 delay-200 transform ${isRightInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
           >
-            <h2 className="text-sm uppercase tracking-widest text-accent font-semibold mb-3">About Aura</h2>
+            <h2 className="text-sm uppercase tracking-widest text-accent font-semibold mb-3">About DS Interiors</h2>
             <h3 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">
               Designing Spaces That Tell Your Unique Story
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed font-light">
-              At Aura, we believe that an interior should be a natural extension of its inhabitants. Established in 2010...
+              At DS Interiors, we believe that an interior should be a natural extension of its inhabitants. Established in 2010...
             </p>
 
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">

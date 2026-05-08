@@ -58,7 +58,7 @@ const Services = () => {
           {servicesList.map((service, index) => (
             <div 
               key={index}
-              className={`group p-8 border border-gray-100 rounded-lg hover:shadow-2xl bg-white/40 backdrop-blur-md transition-all duration-[1000ms] ease-[cubic-bezier(0.23,1,0.32,1)] transform ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              className={`group p-8 border border-[#d4af37]/20 rounded-lg hover:shadow-2xl hover:border-[#d4af37]/50 bg-white/40 backdrop-blur-md transition-all duration-[1000ms] ease-[cubic-bezier(0.23,1,0.32,1)] transform ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div className="w-[56px] h-[56px] bg-transparent border border-gray-200 rounded-full flex items-center justify-center text-[#d4af37] shadow-sm mb-6 transition-all duration-[600ms] ease-[cubic-bezier(0.23,1,0.32,1)] font-[300] tracking-wider group-hover:scale-110 group-hover:shadow-[0px_0px_25px_rgba(212,175,55,0.3)] group-hover:border-[#d4af37]/50">

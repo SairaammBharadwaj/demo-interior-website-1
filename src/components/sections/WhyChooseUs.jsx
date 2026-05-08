@@ -53,7 +53,7 @@ const WhyChooseUs = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 1, ease: [0.23, 1, 0.32, 1] }}
           >
-            Why Choose Aura
+            Why Choose DS Interiors
           </motion.h3>
         </div>
 

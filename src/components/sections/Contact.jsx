@@ -124,7 +124,7 @@ const Contact = () => {
                   <Mail className="w-5 h-5 text-[#d4af37] flex-shrink-0" strokeWidth={1} />
                   <div>
                     <h5 className="font-heading font-[400] text-white mb-1">Email Us</h5>
-                    <p className="text-gray-300 font-[200] text-sm hover:text-[#d4af37] transition-colors cursor-pointer">hello@auradesign.com</p>
+                    <p className="text-gray-300 font-[200] text-sm hover:text-[#d4af37] transition-colors cursor-pointer">hello@dsinteriors.com</p>
                   </div>
                 </div>
               </div>
@@ -145,7 +145,7 @@ const Contact = () => {
                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d240.41983192957045!2d78.59357795719!3d17.4088872897761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1775908312027!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(90%)' }}
+                style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

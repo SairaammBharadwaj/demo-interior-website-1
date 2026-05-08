@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 
 const projectsData = [
   { 
@@ -13,11 +14,12 @@ const projectsData = [
     title: 'The Minimalist Loft', 
     location: 'Downtown Avenue', 
     category: 'Living Room', 
-    image: 'https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/assets/living-room/living-room-1.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1600607687989-ce87920ab718?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1600607688267-33f7215c3258?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      '/assets/living-room/living-room-1.webp',
+      '/assets/living-room/living-room-2.webp',
+      '/assets/living-room/living-room-3.webp',
+      '/assets/living-room/living-room-4.webp'
     ]
   },
   { 
@@ -25,11 +27,12 @@ const projectsData = [
     title: 'Serene Sanctuary', 
     location: 'Pine Hills', 
     category: 'Bedroom', 
-    image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/assets/bedrooms/bedroom-1.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1616593876020-f4722881775a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1616594191393-0131461cc4f9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      '/assets/bedrooms/bedroom-1.webp',
+      '/assets/bedrooms/bedroom-2.webp',
+      '/assets/bedrooms/bedroom-3.webp',
+      '/assets/bedrooms/bedroom-4.webp'
     ]
   },
   { 
@@ -46,14 +49,13 @@ const projectsData = [
   },
   { 
     id: 4, 
-    title: 'Executive Workspace', 
-    location: 'Tech Park', 
-    category: 'Office', 
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    title: 'Cozy Bedroom Retreat', 
+    location: 'Lakeview Estate', 
+    category: 'Bedroom', 
+    image: '/assets/bedrooms/bedroom-5.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      '/assets/bedrooms/bedroom-5.webp',
+      '/assets/bedrooms/bedroom-6.webp'
     ]
   },
   { 
@@ -61,11 +63,11 @@ const projectsData = [
     title: 'Classic Elegance', 
     location: 'Heritage Block', 
     category: 'Living Room', 
-    image: 'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    image: '/assets/living-room/living-room-5.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1600210491369-0268ec3b7bdf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
+      '/assets/living-room/living-room-5.webp',
+      '/assets/living-room/living-room-6.webp',
+      '/assets/living-room/living-room-7.webp'
     ]
   },
   { 
@@ -82,7 +84,7 @@ const projectsData = [
   }
 ];
 
-const categories = ['All', 'Living Room', 'Bedroom', 'Kitchen', 'Office'];
+const categories = ['All', 'Living Room', 'Bedroom', 'Kitchen', 'Gyms'];
 
 const FeaturedProjects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -194,10 +196,17 @@ const FeaturedProjects = () => {
               
               <div className="w-full h-full flex-grow relative overflow-hidden rounded-lg shadow-2xl">
                 <Swiper
-                  modules={[Navigation, Pagination]}
+                  modules={[Navigation, Pagination, Autoplay, EffectFade]}
+                  effect="fade"
+                  fadeEffect={{ crossFade: true }}
+                  speed={1500}
                   navigation
                   pagination={{ clickable: true }}
                   loop={true}
+                  autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                  }}
                   className="w-full h-full"
                 >
                   {selectedProject.gallery.map((imgUrl, index) => (

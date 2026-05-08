@@ -7,28 +7,28 @@ import 'swiper/css/pagination';
 
 const testimonials = [
   {
-    name: 'Eleanor Vance',
-    location: 'Hillside Manor',
-    review: 'Aura transformed our outdated house into a modern sanctuary. Their attention to detail and commitment to our vision was truly unparalleled. The entire process was seamless from start to finish.',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80'
+    name: 'Sarah Jenkins',
+    location: '3BHK Apartment',
+    review: 'Got my interiors done by them recently. The finish on the acrylic kitchen cabinets is really good. There was a slight delay of a few days in handing over, but the final look made up for it. The team is quite responsive on WhatsApp too.',
+    image: 'https://ui-avatars.com/api/?name=Sarah+Jenkins&background=e0e7ff&color=3730a3&font-size=0.4'
   },
   {
-    name: 'Marcus Sterling',
-    location: 'Downtown Penthouse',
-    review: 'The team at Aura has an impeccable eye for design. They struck the perfect balance between luxury and comfort. Coming home is now my favorite part of the day.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80'
+    name: 'Rajeev Menon',
+    location: 'Villa Project',
+    review: 'Really loved the false ceiling and lighting work they did in our living room. It completely changed the look of the house. We had a strict budget but they managed to give it a very premium feel. Special thanks to the site supervisor!',
+    image: 'https://ui-avatars.com/api/?name=Rajeev+Menon&background=fef08a&color=854d0e&font-size=0.4'
   },
   {
-    name: 'Sophia Laurent',
-    location: 'Oceanside Villa',
-    review: 'Working with Aura was an absolute delight. They listened, conceptualized, and executed brilliantly. Our coastal home is stunning, combining minimalism with warmth effortlessly.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80'
+    name: 'Priya Sharma',
+    location: 'Living Room Makeover',
+    review: 'I live abroad so I had to coordinate the entire project over video calls. They handled everything end-to-end without much supervision from my side. Trustworthy team and the woodwork quality is excellent.',
+    image: 'https://ui-avatars.com/api/?name=Priya+Sharma&background=fce7f3&color=be185d&font-size=0.4'
   },
   {
-    name: 'David Chen',
-    location: 'Tech Hub Offices',
-    review: 'Aura revamped our corporate office, and the impact on our team’s morale and productivity was immediate. The space is functional, inspiring, and incredibly stylish.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80'
+    name: 'David Carter',
+    location: 'Master Bedroom',
+    review: 'Very professional execution. My wife wanted a specific kind of sliding wardrobe and they got it done exactly like the Pinterest reference we showed them. The site was kept clean and overall it was a smooth experience.',
+    image: 'https://ui-avatars.com/api/?name=David+Carter&background=dcfce7&color=166534&font-size=0.4'
   }
 ];
 

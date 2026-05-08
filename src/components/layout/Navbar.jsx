@@ -29,8 +29,8 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             {/* Logo */}
             <div className="flex-shrink-0 relative z-50">
-              <a href="#home" className={`text-3xl font-heading font-bold tracking-[0.4em] transition-colors duration-300 ${isMobileMenuOpen ? 'text-white drop-shadow-md' : (isScrolled ? 'text-primary' : 'text-white')}`}>
-                AURA
+              <a href="#home" className={`text-3xl font-heading font-black tracking-widest transition-all duration-300 ${isMobileMenuOpen ? 'text-[#F4EFE6] [text-shadow:0_0_15px_rgba(244,239,230,0.8)]' : (isScrolled ? 'text-primary [text-shadow:0_0_10px_rgba(0,0,0,0.2)]' : 'text-[#F4EFE6] [text-shadow:0_0_20px_rgba(244,239,230,0.8)] hover:[text-shadow:0_0_30px_rgba(244,239,230,1)]')}`}>
+                DS INTERIORS
               </a>
             </div>
 
@@ -40,14 +40,14 @@ const Navbar = () => {
                 <a 
                   key={link.name} 
                   href={link.href}
-                  className={`text-[12px] uppercase tracking-[0.2em] font-medium transition-colors hover:text-accent ${isScrolled ? 'text-gray-800' : 'text-white/90'}`}
+                  className={`text-[12px] uppercase tracking-[0.2em] font-medium transition-colors hover:text-accent ${isScrolled ? 'text-gray-800' : 'text-[#E0DACE]'}`}
                 >
                   {link.name}
                 </a>
               ))}
               <a 
                 href="#contact"
-                className={`px-6 py-2.5 rounded-full text-[12px] uppercase tracking-[0.2em] font-medium transition-all transform hover:scale-105 active:scale-95 ${isScrolled ? 'bg-primary text-white shadow-lg hover:shadow-xl' : 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-black hover:shadow-[0_0_15px_rgba(255,255,255,0.4)]'}`}
+                className={`px-6 py-2.5 rounded-lg text-[12px] uppercase tracking-[0.15em] font-medium transition-colors duration-300 border ${isScrolled ? 'border-primary text-primary hover:bg-primary hover:text-[#F4EFE6]' : 'border-[#F4EFE6] text-[#F4EFE6] hover:bg-[#F4EFE6] hover:text-primary'}`}
               >
                 Book Consultation
               </a>
@@ -57,7 +57,7 @@ const Navbar = () => {
             <div className="md:hidden flex items-center relative z-50">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className={`p-2 rounded-full focus:outline-none transition-all duration-300 ${isMobileMenuOpen ? 'text-white hover:bg-white/10' : (isScrolled ? 'text-primary hover:bg-gray-100' : 'text-white hover:bg-white/10')}`}
+                className={`p-2 rounded-full focus:outline-none transition-all duration-300 ${isMobileMenuOpen ? 'text-[#F4EFE6] hover:bg-[#F4EFE6]/10' : (isScrolled ? 'text-primary hover:bg-gray-100' : 'text-[#F4EFE6] hover:bg-[#F4EFE6]/10')}`}
                 aria-label="Toggle mobile menu"
               >
                 <svg className="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
