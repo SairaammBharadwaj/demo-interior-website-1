@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# Local design masters, retired imagery and review screenshots.
+/design-assets/
+/*-preview.png

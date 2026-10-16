@@ -1,17 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import BrandMark from '../common/BrandMark';
 import { motion, AnimatePresence } from 'framer-motion';
+
+// Matches the easing/duration used by the opening BrandIntro so the logo
+// letters settle with the same feel they travelled up with.
+const EASE = [0.22, 1, 0.36, 1];
+const LOGO_LAYOUT_TRANSITION = { layout: { duration: 1.2, ease: EASE } };
 
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
   { name: 'Services', href: '#services' },
   { name: 'Projects', href: '#projects' },
-  { name: 'Testimonials', href: '#testimonials' },
+  { name: 'Studio notes', href: '#notes' },
   { name: 'Contact', href: '#contact' },
 ];
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
+const Navbar = ({ logoRevealed = true, introDone = true }) => {
+  const [isScrolled, setIsScrolled] = useState(() => window.scrollY > 50);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -22,20 +28,63 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleRef = useRef(null);
+  const menuRef = useRef(null);
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const main = document.querySelector('main');
+    const wasInert = main?.inert;
+    if (main) main.inert = true;
+    const frame = requestAnimationFrame(() => menuRef.current?.querySelector('a')?.focus());
+    const handleKey = event => {
+      if (event.key === 'Escape') { setIsMobileMenuOpen(false); toggleRef.current?.focus(); }
+      if (event.key !== 'Tab') return;
+      const controls = [toggleRef.current, ...menuRef.current.querySelectorAll('a')];
+      const first = controls[0], last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+    const breakpoint = window.matchMedia('(min-width: 1024px)');
+    const closeOnDesktop = event => { if (event.matches) setIsMobileMenuOpen(false); };
+    document.addEventListener('keydown', handleKey);
+    breakpoint.addEventListener('change', closeOnDesktop);
+    return () => {
+      cancelAnimationFrame(frame);
+      document.body.style.overflow = previous;
+      if (main) main.inert = wasInert;
+      document.removeEventListener('keydown', handleKey);
+      breakpoint.removeEventListener('change', closeOnDesktop);
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <>
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${isMobileMenuOpen ? 'bg-transparent py-6' : (isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6')}`}>
+      <nav className={`site-nav fixed w-full transition-all duration-500 ${!introDone ? 'z-[120]' : 'z-50'} ${isMobileMenuOpen ? 'bg-transparent py-6' : (isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6')}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             {/* Logo */}
             <div className="flex-shrink-0 relative z-50">
-              <a href="#home" className={`text-3xl font-heading font-black tracking-widest transition-all duration-300 ${isMobileMenuOpen ? 'text-[#F4EFE6] [text-shadow:0_0_15px_rgba(244,239,230,0.8)]' : (isScrolled ? 'text-primary [text-shadow:0_0_10px_rgba(0,0,0,0.2)]' : 'text-[#F4EFE6] [text-shadow:0_0_20px_rgba(244,239,230,0.8)] hover:[text-shadow:0_0_30px_rgba(244,239,230,1)]')}`}>
-                DS INTERIORS
+              {/* Reserve the logo's footprint so the navbar layout never shifts,
+                  even before the opening reveal hands the letters over. */}
+              <a
+                href="#home"
+                aria-label="Dream Space Interiors — home"
+                className="nav-brand"
+                tabIndex={introDone ? 0 : -1}
+              >
+                {logoRevealed && (
+                  <motion.div layoutId="studio-brand" className="nav-logo"
+                    transition={LOGO_LAYOUT_TRANSITION}>
+                    <BrandMark />
+                  </motion.div>
+                )}
               </a>
             </div>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center space-x-[25px]">
+            <div className="desktop-links hidden lg:flex items-center space-x-[25px]" inert={!introDone} style={{ opacity: introDone ? 1 : 0 }}>
               {navLinks.map((link) => (
                 <a 
                   key={link.name} 
@@ -49,16 +98,21 @@ const Navbar = () => {
                 href="#contact"
                 className={`px-6 py-2.5 rounded-lg text-[12px] uppercase tracking-[0.15em] font-medium transition-colors duration-300 border ${isScrolled ? 'border-primary text-primary hover:bg-primary hover:text-[#F4EFE6]' : 'border-[#F4EFE6] text-[#F4EFE6] hover:bg-[#F4EFE6] hover:text-primary'}`}
               >
-                Book Consultation
+                Let’s talk
               </a>
             </div>
             
             {/* Mobile menu button */}
-            <div className="md:hidden flex items-center relative z-50">
+            <div className="lg:hidden flex items-center relative z-50">
               <button 
+                ref={toggleRef}
+                disabled={!introDone}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="studio-mobile-menu"
+                style={{ opacity: introDone ? 1 : 0 }}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`p-2 rounded-full focus:outline-none transition-all duration-300 ${isMobileMenuOpen ? 'text-[#F4EFE6] hover:bg-[#F4EFE6]/10' : (isScrolled ? 'text-primary hover:bg-gray-100' : 'text-[#F4EFE6] hover:bg-[#F4EFE6]/10')}`}
-                aria-label="Toggle mobile menu"
+                aria-label={isMobileMenuOpen ? 'Close navigation' : 'Open navigation'}
               >
                 <svg className="w-8 h-8 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <motion.path 
@@ -107,6 +161,7 @@ const Navbar = () => {
             animate={{ opacity: 1, backdropFilter: 'blur(16px)' }}
             exit={{ opacity: 0, backdropFilter: 'blur(0px)' }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            id="studio-mobile-menu" ref={menuRef} aria-label="Mobile navigation"
             className="fixed inset-0 z-40 bg-black/85 flex flex-col items-center justify-center min-h-screen"
           >
             {/* Subtle glowing orb background effect */}
@@ -138,7 +193,7 @@ const Navbar = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="mt-10 w-full max-w-[260px] text-center block px-8 py-4 rounded-full border border-white/20 bg-white/5 text-lg font-medium text-white hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_25px_rgba(255,255,255,0.2)] backdrop-blur-md transform active:scale-95"
               >
-                Book Consultation
+                Let’s talk
               </motion.a>
             </div>
           </motion.div>

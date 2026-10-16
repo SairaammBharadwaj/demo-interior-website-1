@@ -3,6 +3,7 @@ import { StrictMode } from 'react'
 // Import the createRoot function from React DOM, which creates a root to display React components inside a browser DOM node
 import { createRoot } from 'react-dom/client'
 // Import the global CSS styles for the application
+import './fonts.css'
 import './index.css'
 // Import the main App component from the local App.jsx file
 import App from './App.jsx'

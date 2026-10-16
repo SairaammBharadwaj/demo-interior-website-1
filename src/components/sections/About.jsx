@@ -1,90 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import Reveal from '../common/Reveal';
+import { ArrowUpRight } from 'lucide-react';
+import { studioImage } from '../../data/studio';
 
-const Counter = ({ end, duration, title, suffix = "" }) => {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  useEffect(() => {
-    if (!isInView) return;
-    
-    let startTime = null;
-    const animateCount = (timestamp) => {
-      if (!startTime) startTime = timestamp;
-      const progress = timestamp - startTime;
-      const progressPercentage = Math.min(progress / duration, 1);
-      
-      const easeOutQuad = 1 - (1 - progressPercentage) * (1 - progressPercentage);
-      
-      setCount(Math.floor(easeOutQuad * end));
-      
-      if (progressPercentage < 1) {
-        window.requestAnimationFrame(animateCount);
-      }
-    };
-    
-    window.requestAnimationFrame(animateCount);
-  }, [end, duration, isInView]);
-
-  return (
-    <div ref={ref} className="text-center md:text-left">
-      <h3 className="text-4xl font-heading font-bold text-accent mb-2">{count}{suffix}</h3>
-      <p className="text-gray-600 text-sm uppercase tracking-wider">{title}</p>
-    </div>
-  );
-};
-
-const About = () => {
-  const leftRef = useRef(null);
-  const isLeftInView = useInView(leftRef, { once: true, margin: "-100px" });
-  
-  const rightRef = useRef(null);
-  const isRightInView = useInView(rightRef, { once: true, margin: "-100px" });
-
-  return (
-    <section id="about" className="py-24 bg-secondary overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
-          <div 
-            ref={leftRef}
-            className={`relative transition-all duration-1000 transform ${isLeftInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}
-          >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-sm shadow-xl">
-              <img 
-                src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
-                alt="Interior Design Team" 
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-primary -z-10 hidden md:block"></div>
-            <div className="absolute top-1/2 -left-6 w-12 h-24 bg-accent -z-10 hidden md:block opacity-50"></div>
-          </div>
-
-          <div 
-            ref={rightRef}
-            className={`transition-all duration-1000 delay-200 transform ${isRightInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}
-          >
-            <h2 className="text-sm uppercase tracking-widest text-accent font-semibold mb-3">About DS Interiors</h2>
-            <h3 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6">
-              Designing Spaces That Tell Your Unique Story
-            </h3>
-            <p className="text-gray-600 mb-6 leading-relaxed font-light">
-              At DS Interiors, we believe that an interior should be a natural extension of its inhabitants. Established in 2010...
-            </p>
-
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
-              <Counter end={15} duration={2000} title="Years Experience" suffix="+" />
-              <Counter end={350} duration={2500} title="Projects Completed" suffix="+" />
-              <Counter end={100} duration={2000} title="Happy Clients" suffix="%" />
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default About;
+export default function About() {
+  return <section id="about" className="studio-section studio-about"><div className="studio-container studio-about-grid">
+    <Reveal className="studio-about-collage"><figure className="studio-about-main"><img src={studioImage('editorial/empty-studio')} srcSet="/assets/editorial/empty-studio-768.webp 768w, /assets/editorial/empty-studio.webp 1536w" sizes="(max-width:800px) 100vw, 45vw" alt="An empty interior design studio with walnut desks, fabric samples and natural daylight" width="1536" height="1024" loading="lazy" /></figure><div className="studio-about-details"><figure><img src={studioImage('editorial/living-evening').replace('.webp','-768.webp')} alt="Warm layered lighting and walnut furniture in a living room concept" width="768" height="512" loading="lazy"/></figure><figure><img src={studioImage('editorial/bedroom-oak').replace('.webp','-768.webp')} alt="Pale oak joinery and linen textures in a bedroom concept" width="768" height="512" loading="lazy"/></figure></div><small>Studio space and room concepts / AI-generated illustrations</small></Reveal>
+    <Reveal className="studio-about-copy" delay={0.12}><p className="studio-kicker">01 / The studio</p><h2>A space should feel<br /><span>like it belongs to you.</span></h2><p className="studio-lead">The way you live is where we begin.</p><p>Slow mornings, a full dining table, a quiet corner at the end of the day. We bring your routines and ideas into a thoughtful plan, with materials, light and details that work together.</p><p>From one room to a complete home, Dream Space Interiors shapes spaces around comfort, character and the things that matter to you.</p>
+    <div className="studio-principles"><div><small>01</small><h3>Personal by design</h3><p>Built around your space and your everyday.</p></div><div><small>02</small><h3>Considered in detail</h3><p>A clear relationship between function and finish.</p></div></div><a href="#contact" className="studio-text-link">Tell us what you’re imagining <ArrowUpRight size={16} /></a></Reveal>
+  </div></section>;
+}

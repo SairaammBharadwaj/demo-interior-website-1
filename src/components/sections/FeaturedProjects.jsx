@@ -1,231 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react';
+import { ArrowUpRight, X } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import { Navigation, Pagination, A11y, Keyboard } from 'swiper/modules';
+import Reveal from '../common/Reveal';
+import { inspirationImages, studioImage, studio } from '../../data/studio';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+const categories = ['All', 'Living Room', 'Bedroom', 'Kitchen'];
 
-const projectsData = [
-  { 
-    id: 1, 
-    title: 'The Minimalist Loft', 
-    location: 'Downtown Avenue', 
-    category: 'Living Room', 
-    image: '/assets/living-room/living-room-1.webp',
-    gallery: [
-      '/assets/living-room/living-room-1.webp',
-      '/assets/living-room/living-room-2.webp',
-      '/assets/living-room/living-room-3.webp',
-      '/assets/living-room/living-room-4.webp'
-    ]
-  },
-  { 
-    id: 2, 
-    title: 'Serene Sanctuary', 
-    location: 'Pine Hills', 
-    category: 'Bedroom', 
-    image: '/assets/bedrooms/bedroom-1.webp',
-    gallery: [
-      '/assets/bedrooms/bedroom-1.webp',
-      '/assets/bedrooms/bedroom-2.webp',
-      '/assets/bedrooms/bedroom-3.webp',
-      '/assets/bedrooms/bedroom-4.webp'
-    ]
-  },
-  { 
-    id: 3, 
-    title: 'Modern Culinary Space', 
-    location: 'West End', 
-    category: 'Kitchen', 
-    image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
-    ]
-  },
-  { 
-    id: 4, 
-    title: 'Cozy Bedroom Retreat', 
-    location: 'Lakeview Estate', 
-    category: 'Bedroom', 
-    image: '/assets/bedrooms/bedroom-5.webp',
-    gallery: [
-      '/assets/bedrooms/bedroom-5.webp',
-      '/assets/bedrooms/bedroom-6.webp'
-    ]
-  },
-  { 
-    id: 5, 
-    title: 'Classic Elegance', 
-    location: 'Heritage Block', 
-    category: 'Living Room', 
-    image: '/assets/living-room/living-room-5.webp',
-    gallery: [
-      '/assets/living-room/living-room-5.webp',
-      '/assets/living-room/living-room-6.webp',
-      '/assets/living-room/living-room-7.webp'
-    ]
-  },
-  { 
-    id: 6, 
-    title: 'Open Concept Haven', 
-    location: 'Marina Bay', 
-    category: 'Kitchen', 
-    image: 'https://images.unsplash.com/photo-1556909211-36987daf7b4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    gallery: [
-      'https://images.unsplash.com/photo-1556909211-36987daf7b4d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1556909190-eccf4a8bf97a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
-      'https://images.unsplash.com/photo-1556910110-4c49dff4dd62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80'
-    ]
-  }
-];
-
-const categories = ['All', 'Living Room', 'Bedroom', 'Kitchen', 'Gyms'];
-
-const FeaturedProjects = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  const filteredProjects = activeCategory === 'All' 
-    ? projectsData 
-    : projectsData.filter(project => project.category === activeCategory);
-
-  useEffect(() => {
-    if (selectedProject) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [selectedProject]);
-
-  return (
-    <section id="projects" className="py-24 bg-secondary">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-          <div>
-            <h2 className="text-sm uppercase tracking-widest text-accent font-semibold mb-3">Portfolio</h2>
-            <h3 className="text-3xl md:text-5xl font-heading font-bold text-primary">
-              Featured Projects
-            </h3>
-          </div>
-          
-          {/* Filters */}
-          <div className="mt-8 md:mt-0 flex flex-wrap gap-2 md:gap-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeCategory === category 
-                    ? 'bg-primary text-white shadow-md' 
-                    : 'bg-white text-gray-600 hover:bg-gray-100 hover:text-primary border border-gray-200'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Gallery Grid */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          <AnimatePresence>
-            {filteredProjects.map((project) => (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                key={project.id}
-                className="group relative h-[400px] overflow-hidden rounded-sm cursor-pointer shadow-sm hover:shadow-xl"
-                onClick={() => setSelectedProject(project)}
-              >
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-accent text-sm uppercase tracking-wider mb-2">{project.category}</p>
-                    <h4 className="text-white text-2xl font-heading font-semibold mb-1">{project.title}</h4>
-                    <p className="text-white/80 font-light mb-6">{project.location}</p>
-                    <span className="inline-block border-b border-white text-white uppercase text-xs tracking-widest pb-1 hover:text-accent hover:border-accent transition-colors">
-                      View Project
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-      </div>
-
-      {/* Lightbox Overlay */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 md:p-8"
-          >
-            {/* Close Button */}
-            <button 
-              onClick={() => setSelectedProject(null)}
-              className="absolute top-6 right-6 z-[60] bg-white/10 hover:bg-white/20 p-2 rounded-full text-white transition-colors"
-            >
-              <X size={24} />
-            </button>
-
-            {/* Content Container */}
-            <div className="w-full max-w-5xl h-[80vh] flex flex-col">
-              <div className="mb-6 text-center">
-                <h3 className="text-3xl font-heading font-light text-white">{selectedProject.title}</h3>
-                <p className="text-accent text-sm tracking-widest uppercase mt-2">{selectedProject.location} • {selectedProject.category}</p>
-              </div>
-              
-              <div className="w-full h-full flex-grow relative overflow-hidden rounded-lg shadow-2xl">
-                <Swiper
-                  modules={[Navigation, Pagination, Autoplay, EffectFade]}
-                  effect="fade"
-                  fadeEffect={{ crossFade: true }}
-                  speed={1500}
-                  navigation
-                  pagination={{ clickable: true }}
-                  loop={true}
-                  autoplay={{
-                    delay: 5000,
-                    disableOnInteraction: false,
-                  }}
-                  className="w-full h-full"
-                >
-                  {selectedProject.gallery.map((imgUrl, index) => (
-                    <SwiperSlide key={index}>
-                      <img 
-                        src={imgUrl} 
-                        alt={`${selectedProject.title} - Image ${index + 1}`}
-                        className="w-full h-full object-cover rounded-lg"
-                      />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </section>
-  );
-};
-
-export default FeaturedProjects;
+export default function FeaturedProjects() {
+  const [category,setCategory]=useState('All');
+  const [selected,setSelected]=useState(null);
+  const dialog=useRef(null);
+  const opener=useRef(null);
+  const gallerySwiper=useRef(null);
+  const [viewIndex,setViewIndex]=useState(0);
+  useEffect(()=>{
+    if(!selected)return;
+    const current=dialog.current;
+    const previous=document.body.style.overflow;
+    current.showModal(); document.body.style.overflow='hidden';
+    return ()=>{ current.close();document.body.style.overflow=previous;opener.current?.focus({preventScroll:true}); };
+  },[selected]);
+  const filtered=inspirationImages.filter(item=>category==='All'||item.category===category);
+  return <section id="projects" className="studio-section studio-projects"><div className="studio-container">
+    <Reveal className="studio-section-heading"><div><p className="studio-kicker">03 / Interior inspiration</p><h2>Room for a<br /><span>different perspective.</span></h2></div><p>Living spaces, bedrooms and kitchens.<br />Find a feeling you’d love to come home to.</p></Reveal>
+    <div className="studio-project-toolbar"><div className="studio-filters" role="group" aria-label="Filter interior inspiration">{categories.map(item=><button type="button" key={item} aria-pressed={category===item} onClick={()=>setCategory(item)}>{item==='All'?'The collection':item==='Kitchen'?'Kitchens':item==='Bedroom'?'Bedrooms':'Living rooms'}</button>)}</div><span role="status">{filtered.length} images / {new Set(filtered.map(project=>project.category)).size} {category==='All'?'collections':'collection'}</span></div>
+    <motion.div layout className="studio-project-grid"><AnimatePresence mode="popLayout">{filtered.map(project=><motion.button layout type="button" key={project.sceneId} className="studio-project-card" initial={{opacity:0,y:18}} animate={{opacity:1,y:0}} exit={{opacity:0,scale:0.97}} transition={{duration:0.35}} aria-haspopup="dialog" aria-label={`Explore ${project.title}, ${project.gallery.length} design images`} onClick={event=>{opener.current=event.currentTarget;setViewIndex(project.initialSlide);setSelected(project);}}><span className="studio-project-image"><img src={studioImage(project.image)} alt={project.alt} srcSet={`${studioImage(project.image).replace('.webp','-768.webp')} 768w, ${studioImage(project.image)} 1536w`} sizes="(max-width:600px) 100vw, (max-width:1000px) 50vw, 33vw" width="1536" height="1024" loading="lazy" /><span className="studio-project-photo-count">{project.gallery.length} images · Explore</span><span className="studio-project-open"><ArrowUpRight size={21}/></span></span><span className="studio-project-meta"><span><small>{project.category}</small><strong>{project.title}</strong></span><span>{String(project.number).padStart(2,'0')}</span></span></motion.button>)}</AnimatePresence></motion.div>
+    <p className="studio-disclosure">AI-generated interior inspiration. These images illustrate design directions and are not photographs of completed client projects.</p>
+  </div>
+  <dialog ref={dialog} className="studio-project-dialog" aria-labelledby="concept-title" onCancel={()=>setSelected(null)} onClick={event=>{if(event.target===dialog.current){const r=event.currentTarget.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)setSelected(null);}}}>
+  {selected&&<><div className="studio-dialog-header"><div><p className="studio-kicker">{selected.category} / Design visualisation</p><h2 id="concept-title">{selected.title}</h2></div><button type="button" className="studio-icon-button" aria-label="Close studio design" onClick={()=>setSelected(null)} autoFocus><X size={22}/></button></div><Swiper key={selected.sceneId} initialSlide={selected.initialSlide} onSwiper={instance=>{gallerySwiper.current=instance;}} modules={[Navigation,Pagination,A11y,Keyboard]} keyboard={{enabled:true,onlyInViewport:true}} navigation={selected.gallery.length>1} pagination={selected.gallery.length>1 ? {clickable:true} : false} onSlideChange={swiper=>setViewIndex(swiper.activeIndex)} className="studio-gallery">{selected.gallery.map((image,index)=><SwiperSlide key={image}><img src={studioImage(image)} alt={`${selected.category} design inspiration — image ${index+1} of ${selected.gallery.length}`} /></SwiperSlide>)}</Swiper><div className="studio-gallery-thumbnails" role="group" aria-label="Choose a gallery image">{selected.gallery.map((image,index)=><button type="button" key={image} aria-label={`View ${selected.category.toLowerCase()} image ${index+1}`} aria-pressed={viewIndex===index} onClick={()=>gallerySwiper.current?.slideTo(index)}><img src={studioImage(image).replace('.webp','-768.webp')} alt="" width="77" height="51" loading="lazy"/></button>)}</div><div className="studio-dialog-description"><div><p>{selected.description}</p><small>{selected.materials}</small></div><a className="studio-button" href={`${studio.whatsapp}?text=${encodeURIComponent(`Hello Dream Space Interiors! I liked your “${selected.title}” design and would love to discuss my space.`)}`} target="_blank" rel="noopener noreferrer">Discuss this direction <ArrowUpRight size={16}/></a></div><p className="studio-dialog-note"><span>AI-generated design inspiration</span><span role="status" aria-live="polite">View {viewIndex+1} / {selected.gallery.length}</span></p></>}
+  </dialog></section>;
+}

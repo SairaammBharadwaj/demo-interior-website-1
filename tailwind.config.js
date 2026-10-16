@@ -13,8 +13,8 @@ export default {
         light:"#FFFFFF",
       },
       fontFamily: {
-        sans: ['"Mulish"', 'sans-serif'],
-        heading: ['"Mulish"', 'sans-serif'],
+        sans: ['"Barlow"', 'sans-serif'],
+        heading: ['"Jost"', 'sans-serif'],
       }
     },
   },

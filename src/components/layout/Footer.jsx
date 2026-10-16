@@ -1,64 +1,13 @@
-import React from 'react';
+import { ArrowUp, ArrowUpRight } from 'lucide-react';
+import BrandMark from '../common/BrandMark';
+import SocialLinks from '../common/SocialLinks';
+import { studio } from '../../data/studio';
 
-const Footer = () => {
-  return (
-    <footer className="bg-primary pt-16 pb-8 border-t border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          
-          {/* Brand */}
-          <div className="col-span-1 md:col-span-1">
-            <h2 className="text-2xl font-heading font-bold tracking-wider text-white mb-4">DS INTERIORS</h2>
-            <p className="text-white/60 font-light text-sm leading-relaxed max-w-xs">
-              Crafting timeless, minimalist, and functional luxury interiors for the discerning few.
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-white font-heading font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="#home" className="text-white/60 hover:text-accent font-light text-sm transition-colors">Home</a></li>
-              <li><a href="#about" className="text-white/60 hover:text-accent font-light text-sm transition-colors">About Us</a></li>
-              <li><a href="#services" className="text-white/60 hover:text-accent font-light text-sm transition-colors">Services</a></li>
-              <li><a href="#projects" className="text-white/60 hover:text-accent font-light text-sm transition-colors">Projects</a></li>
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div>
-            <h4 className="text-white font-heading font-semibold mb-4">Support</h4>
-            <ul className="space-y-2">
-              <li><a href="#testimonials" className="text-white/60 hover:text-accent font-light text-sm transition-colors">Testimonials</a></li>
-              <li><a href="#" className="text-white/60 hover:text-accent font-light text-sm transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-white/60 hover:text-accent font-light text-sm transition-colors">Terms of Service</a></li>
-              <li><a href="#contact" className="text-white/60 hover:text-accent font-light text-sm transition-colors">Contact</a></li>
-            </ul>
-          </div>
-
-          {/* Business Info */}
-          <div>
-            <h4 className="text-white font-heading font-semibold mb-4">Studio</h4>
-            <p className="text-white/60 font-light text-sm mb-2">123 Design Boulevard, Suite 450</p>
-            <p className="text-white/60 font-light text-sm mb-2">Metropolis, NY 10001</p>
-            <p className="text-white/60 font-light text-sm mb-2">+1 (800) 123-4567</p>
-            <p className="text-white/60 font-light text-sm">hello@dsinteriors.com</p>
-          </div>
-          
-        </div>
-        
-        {/* Copyright */}
-        <div className="pt-8 border-t border-white/10 text-center flex flex-col md:flex-row justify-between items-center">
-          <p className="text-white/40 text-xs font-light mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} DS Interiors. All rights reserved.
-          </p>
-          <div className="text-white/40 text-xs font-light">
-            Designed for Modern Living.
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-};
-
-export default Footer;
+export default function Footer(){
+ return <footer className="studio-footer"><div className="studio-container">
+  <div className="studio-footer-invitation"><div><p className="studio-kicker">A conversation is a good beginning</p><h2>Your next space<br />starts here.</h2></div><a href={studio.whatsapp} className="studio-text-link" target="_blank" rel="noopener noreferrer">Let’s bring it to life <ArrowUpRight size={19}/></a></div>
+  <SocialLinks/>
+  <div className="studio-footer-top"><div><a href="#home" aria-label="Dream Space Interiors home" className="studio-footer-brand"><BrandMark/></a><p>Considered interiors.<br />A more personal kind of living.</p></div><nav aria-label="Footer navigation"><a href="#about">The studio</a><a href="#services">Our services</a><a href="#projects">The collection</a><a href="#process">Our process</a><a href="#notes">Studio notes</a><a href="#contact">Contact</a></nav><div className="studio-footer-contact"><small>Hyderabad, India</small><a href={studio.telephone}>{studio.phone}</a><a href={`mailto:${studio.email}`}>{studio.email}</a></div><a href="#home" className="studio-back-top" aria-label="Back to top"><ArrowUp size={21}/></a></div>
+  <div className="studio-footer-bottom"><span>© {new Date().getFullYear()} {studio.name}</span><span>Spaces for the way you live.</span></div>
+ </div></footer>;
+}
