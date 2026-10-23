@@ -11,7 +11,7 @@ The Dream Space → DS → CAD logo → header opening remains intact. Typograph
 - Expanded each room category to three images, nine in total. The collection shows image counts, and each dialog includes thumbnails, keyboard navigation, arrows and a current-image counter.
 - Added six service images, a three-image studio collage and a three-image process strip. Studio notes use a wider variety of scenes.
 - Six additional plant-free photographic concepts were generated with the built-in image tool. All ten editorial scenes are illustrative AI-generated inspiration, never presented as completed client work or actual staff photographs.
-- Kept the prominent footer actions for WhatsApp, call, email and directions. Instagram and YouTube remain unset at the user's request.
+- Kept the prominent footer actions for WhatsApp, call, email and directions. Instagram and YouTube now link to the studio profiles supplied by the client.
 - Original supplied photographs and renders remain in their original asset folders.
 
 ## Image files and prompts
@@ -41,3 +41,7 @@ Interior inspiration now displays nine individual room cards (three per category
 ## Icon-only contact links
 
 Footer contact cards are now four standalone icons for WhatsApp, phone, email and directions. In the contact section only each icon links to its destination; adjacent details are plain text. WhatsApp uses a recognisable phone-in-chat glyph, including the floating shortcut. Icon links retain accessible names, keyboard focus outlines, hover titles and transparent touch targets. Build and lint passed. Contact and footer appearance checked in the browser; no external contact actions were triggered. Screenshot: icon-only-contact-preview.png. Backup: ../Before-icon-only-contact-links.zip.
+
+## Updated contact profiles
+
+Phone and WhatsApp: +91 99897 12208. Email: dreamspaceinteriors22@gmail.com. Instagram: https://www.instagram.com/dreamspaceinteriors22/. YouTube: https://www.youtube.com/@dsinteriors_hyd. Social links use standalone icons in the footer, with Instagram and YouTube also available in the contact section. Contact destinations have accessible names and external links open in a separate tab.

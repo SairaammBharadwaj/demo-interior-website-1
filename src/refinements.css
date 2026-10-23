@@ -75,3 +75,6 @@ html:has(.site-nav button[aria-expanded=true]) .studio-whatsapp{visibility:hidde
 .studio-whatsapp:hover{background:none;color:#a4874c}
 @media(max-width:600px){.studio-contact-detail{font-size:12px;gap:10px}.studio-whatsapp{width:48px;height:48px;padding:6px;border-radius:0}}
 @media(prefers-reduced-motion:reduce){.studio-contact-icon,.studio-whatsapp{transition:none}}
+.studio-contact-profiles{margin-top:27px}.studio-contact-profiles .studio-kicker{font-size:10px;margin-bottom:10px}.studio-contact-profiles .studio-socials{margin-top:0;gap:14px}
+@media(max-width:600px){.studio-footer>.studio-container>.studio-socials{gap:10px}}
+@media(max-width:350px){.studio-footer>.studio-container>.studio-socials{display:grid;grid-template-columns:repeat(3,44px);gap:10px 16px}}

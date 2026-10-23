@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail } from 'lucide-react';
 import Reveal from '../common/Reveal';
 import WhatsAppIcon from '../common/WhatsAppIcon';
+import SocialLinks from '../common/SocialLinks';
 import { studio, studioImage } from '../../data/studio';
 
 const brief = encodeURIComponent('Hello Dream Space Interiors! I would like to discuss an interior design project.');
@@ -31,6 +32,7 @@ export default function Contact() {
             <span><small>Find us in Hyderabad</small>{studio.address.map(line => <span className="studio-address-line" key={line}>{line}</span>)}</span>
           </div>
         </div>
+        <div className="studio-contact-profiles"><p className="studio-kicker">Follow the studio</p><SocialLinks profilesOnly/></div>
       </Reveal>
       <Reveal className="studio-contact-image" delay={0.1}>
         <img src={studioImage('editorial/natural-bedroom')} srcSet="/assets/editorial/natural-bedroom-768.webp 768w, /assets/editorial/natural-bedroom.webp 1536w" sizes="(max-width:800px) 100vw, 45vw" alt="Photorealistic bedroom concept with natural linen, a walnut bed and soft daylight" width="1536" height="1024" loading="lazy"/>

@@ -4,8 +4,8 @@ export const studio = {
   telephone: 'tel:+919989712208',
   email: 'dreamspaceinteriors22@gmail.com',
   whatsapp: 'https://wa.me/919989712208',
-  instagram: '',
-  youtube: '',
+  instagram: 'https://www.instagram.com/dreamspaceinteriors22/',
+  youtube: 'https://www.youtube.com/@dsinteriors_hyd',
   address: ['Sai Residency, near Buddha Nagar Sai Baba Temple', 'Mallikarjuna Nagar, Boduppal', 'Hyderabad, Telangana 500092'],
   map: 'https://www.google.com/maps/search/?api=1&query=Sai+Residency+Buddha+Nagar+Sai+Baba+Temple+Boduppal+Hyderabad',
 };
