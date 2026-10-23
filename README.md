@@ -45,3 +45,7 @@ Footer contact cards are now four standalone icons for WhatsApp, phone, email an
 ## Updated contact profiles
 
 Phone and WhatsApp: +91 99897 12208. Email: dreamspaceinteriors22@gmail.com. Instagram: https://www.instagram.com/dreamspaceinteriors22/. YouTube: https://www.youtube.com/@dsinteriors_hyd. Social links use standalone icons in the footer, with Instagram and YouTube also available in the contact section. Contact destinations have accessible names and external links open in a separate tab.
+
+## WhatsApp placement
+
+Removed the fixed bottom-right WhatsApp shortcut. WhatsApp remains beside Instagram, YouTube and the other contact icons in the footer, with the existing contact-section conversation link preserved. Additional design suggestions are awaiting client approval and have not been implemented.

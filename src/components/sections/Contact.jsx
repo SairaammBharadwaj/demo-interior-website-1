@@ -39,6 +39,5 @@ export default function Contact() {
         <div><span className="studio-kicker">A little more you.</span><p>Good spaces begin<br />with a conversation.</p><small>AI-generated interior inspiration</small></div>
       </Reveal>
     </div>
-    <a className="studio-whatsapp" href={studio.whatsapp} aria-label="Chat with Dream Space Interiors on WhatsApp" title="WhatsApp" target="_blank" rel="noopener noreferrer"><WhatsAppIcon size={31}/></a>
   </section>;
 }
