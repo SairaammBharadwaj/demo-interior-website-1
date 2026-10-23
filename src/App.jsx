@@ -1,6 +1,7 @@
 // Import the React library plus the hook used to track the opening reveal
 import React, { useCallback, useEffect, useState } from 'react';
 import { LayoutGroup, MotionConfig } from 'framer-motion';
+import { shouldSkipIntro, rememberIntro } from './utils/introSession';
 import './brand.css';
 import './studio.css';
 import './refinements.css';
@@ -31,12 +32,9 @@ import WorkProcess from './components/sections/WorkProcess';
 
 // Define the main App functional component that serves as the root of the application's component tree
 function App() {
-  // Whether the opening reveal has handed the brand letters to the navbar.
-  // Flipping this true mounts the navbar's shared-layout logo pieces in the
-  // same commit the centered ones unmount, which is what triggers the FLIP.
-  const [logoRevealed, setLogoRevealed] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  // Whether the opening curtain overlay is still on screen.
-  const [introDone, setIntroDone] = useState(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  // Returning visitors start with the content and header logo already available.
+  const [introDone, setIntroDone] = useState(shouldSkipIntro);
+  const [logoRevealed, setLogoRevealed] = useState(introDone);
   const revealLogo = useCallback(() => setLogoRevealed(true), []);
   const finishIntro = useCallback(() => { setLogoRevealed(true); setIntroDone(true); }, []);
 
@@ -48,10 +46,13 @@ function App() {
   }, [finishIntro]);
 
   useEffect(() => {
-    if (introDone) return;
+    if (introDone) {
+      rememberIntro();
+      return;
+    }
     const previous = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    // Reserve the scrollbar width to keep the logo's target stable during handoff.
+    // Keep scrolling and navigation locked only while the opening is playing.
     document.documentElement.classList.add('intro-playing');
     return () => {
       document.body.style.overflow = previous;
