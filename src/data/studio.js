@@ -6,8 +6,8 @@ export const studio = {
   whatsapp: 'https://wa.me/919989712208',
   instagram: 'https://www.instagram.com/dreamspaceinteriors22/',
   youtube: 'https://www.youtube.com/@dsinteriors_hyd',
-  address: ['Sai Residency, near Buddha Nagar Sai Baba Temple', 'Mallikarjuna Nagar, Boduppal', 'Hyderabad, Telangana 500092'],
-  map: 'https://www.google.com/maps/search/?api=1&query=Sai+Residency+Buddha+Nagar+Sai+Baba+Temple+Boduppal+Hyderabad',
+  address: ['H. No. 5-100, Road Number 6', 'Budha Nagar, Buddha Nagar Colony', 'Mallikarjuna Nagar, Boduppal', 'Hyderabad, Telangana 500092'],
+  map: 'https://www.google.com/maps/search/?api=1&query=DS+INTERIORS%2C+H+5-100%2C+Road+Number+6%2C+Budha+Nagar%2C+Buddha+Nagar+Colony%2C+Mallikarjuna+Nagar%2C+Boduppal%2C+Hyderabad%2C+Telangana+500092',
 };
 
 // AI-generated photographic inspiration; never represented as completed client work.

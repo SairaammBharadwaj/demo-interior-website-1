@@ -48,4 +48,8 @@ Phone and WhatsApp: +91 99897 12208. Email: dreamspaceinteriors22@gmail.com. Ins
 
 ## WhatsApp placement
 
-Removed the fixed bottom-right WhatsApp shortcut. WhatsApp remains beside Instagram, YouTube and the other contact icons in the footer, with the existing contact-section conversation link preserved. Additional design suggestions are awaiting client approval and have not been implemented.
+Removed the fixed bottom-right WhatsApp shortcut. WhatsApp remains beside Instagram, YouTube and the other contact icons in the footer, with the existing contact-section conversation link preserved. Additional suggested changes were declined and have not been implemented. Real project stories will be supplied later.
+
+## Confirmed studio address
+
+Updated from the client's DS INTERIORS Google Maps screenshot: H. No. 5-100, Road Number 6, Budha Nagar, Buddha Nagar Colony, Mallikarjuna Nagar, Boduppal, Hyderabad, Telangana 500092. The contact address and both map icons share this corrected destination.
